@@ -1,0 +1,8 @@
+/home/stasy/Projects/LinuxGuide/LinuxGuide/obj/x86/Debug/LinuxGuide.csprojAssemblyReference.cache
+/home/stasy/Projects/LinuxGuide/LinuxGuide/bin/Debug/LinuxGuide.exe
+/home/stasy/Projects/LinuxGuide/LinuxGuide/bin/Debug/LinuxGuide.pdb
+/home/stasy/Projects/LinuxGuide/LinuxGuide/obj/x86/Debug/LinuxGuide.exe
+/home/stasy/Projects/LinuxGuide/LinuxGuide/obj/x86/Debug/LinuxGuide.pdb
+/home/stasy/Projects/LinuxGuide/LinuxGuide/bin/Debug/Newtonsoft.Json.dll
+/home/stasy/Projects/LinuxGuide/LinuxGuide/bin/Debug/Newtonsoft.Json.xml
+/home/stasy/Projects/LinuxGuide/LinuxGuide/obj/x86/Debug/LinuxGuide.csproj.CopyComplete
