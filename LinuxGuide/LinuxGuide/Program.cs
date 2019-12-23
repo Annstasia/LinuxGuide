@@ -61,7 +61,7 @@ namespace LinuxGuide
                 // if (command == "Выйти") Exit();
                 while (!(command == "Игра" || command == "Добавление" || command == "Удаление"))
                 {
-                    command = Input_ans("Введите режим (Игра, Добавление, Удаление, Просмотр)");
+                    command = Input_ans("Введите режим (Игра, Добавление, Удаление)");
                 }
                 Console.Clear();
 
@@ -85,6 +85,7 @@ namespace LinuxGuide
 
 
         static void Play() {
+            // Console.WriteLine(table.Count);
             if (table.Count == 0)
             {
                 Console.WriteLine("Нет данных");
@@ -260,6 +261,10 @@ namespace LinuxGuide
         static void Looking()
         {
             // Console.Clear();
+            if (table.Count == 0)
+            {
+                Console.WriteLine("Нет данных :(");
+            }
             foreach (string category in table.Keys)
             {
                 Console.WriteLine("Категория \"" + category + "\":");
@@ -316,19 +321,6 @@ namespace LinuxGuide
             Console.WriteLine("\t\tГлавная - для перехода в основное меню");
             Console.WriteLine("\tКонец справки");
             Console.WriteLine();
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
         static void Header()
@@ -349,7 +341,8 @@ namespace LinuxGuide
             {
                 Console.WriteLine(s + ";");
             }
-            string category = Console.ReadLine();
+            string category = Input_ans("");
+            if (category == "Главная") return "Главная";
             while (!(category == "Все" || table.ContainsKey(category)))
             {
                 category = Input_ans("Выберите категорию из заданных!");
@@ -380,18 +373,24 @@ namespace LinuxGuide
                 fstream.Read(array, 0, array.Length);
                 string textFromFile = System.Text.Encoding.Default.GetString(array);
                 // Console.WriteLine($"Текст из файла: {textFromFile}");
-                table = JsonConvert.DeserializeObject<Dictionary <string, Dictionary<string, List<string>>>>(textFromFile);
+                // Console.WriteLine(textFromFile == "");
+                if (!(textFromFile == ""))
+                {
+                    table = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<string>>>>(textFromFile);
+                }
+                // Console.WriteLine(table.Count);
             }
       
         }
 
         static void Exit()
         {
-            using (FileStream fstream = new FileStream("table.json", FileMode.OpenOrCreate))
+            using (FileStream fstream = new FileStream("table.json", FileMode.Create))
             {
                 // преобразуем строку в байты
                 byte[] array = System.Text.Encoding.Default.GetBytes(JsonConvert.SerializeObject(table));
                 // запись массива байтов в файл
+
                 fstream.Write(array, 0, array.Length);
                 Console.WriteLine("Текст записан в файл");
             }
